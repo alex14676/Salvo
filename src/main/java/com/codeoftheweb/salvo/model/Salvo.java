@@ -1,11 +1,11 @@
 package com.codeoftheweb.salvo.model;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Salvo {
 
     @Id
@@ -14,15 +14,18 @@ public class Salvo {
     private Long id;
     private int turn;
 
-    @ManyToOne(fetch= FetchType.EAGER)
+
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="GamePlayerID")
     private GamePlayer gamePlayer;
 
     @ElementCollection
     @Column(name = "locations")
-    private List<String> locations = new ArrayList<>();
+    private List<String> locations;
 
-    public Salvo(){}
+    public Salvo() {
+        this.locations = new ArrayList<>();
+    }
 
     public Salvo(int turn, GamePlayer gamePlayer, List<String> locations) {
         this.turn = turn;

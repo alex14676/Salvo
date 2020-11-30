@@ -46,6 +46,15 @@ public class GamePlayerDTO {
             ShipDTO shipDTO = new ShipDTO();
             return  shipDTO.makeShipDTO(ships);
         }));
+        dto.put("salvoes",  gamePlayer.getGame().getGamePlayers()
+                .stream()
+                .flatMap(gamePlayer -> gamePlayer.getSalvos()
+                        .stream()
+                        .map(salvo -> {
+                            SalvoDTO salvoDTO = new SalvoDTO();
+                            return salvoDTO.makeSalvoDTO(salvo);
+                        }))
+                .collect(Collectors.toList()));
 
         return  dto;
 

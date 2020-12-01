@@ -3,10 +3,12 @@ package com.codeoftheweb.salvo.controller;
 import com.codeoftheweb.salvo.dto.GameDTO;
 import com.codeoftheweb.salvo.dto.GamePlayerDTO;
 import com.codeoftheweb.salvo.dto.PlayerDTO;
+import com.codeoftheweb.salvo.dto.ScoreDTO;
 import com.codeoftheweb.salvo.model.GamePlayer;
 import com.codeoftheweb.salvo.repository.GamePlayerRepository;
 import com.codeoftheweb.salvo.repository.GameRepository;
 import com.codeoftheweb.salvo.repository.PlayerRepository;
+import com.codeoftheweb.salvo.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,9 @@ public class SalvoController {
     @Autowired
     PlayerRepository playerRepository;
 
+    @Autowired
+    ScoreRepository scoreRepository;
+
     @RequestMapping("/players")
     public List<Map<String, Object>> getPlayerAll() {
         return playerRepository.findAll()
@@ -47,6 +52,27 @@ public class SalvoController {
                 .map(game -> {
                     GameDTO gameDTO = new GameDTO(game);
                     return gameDTO.makeGameDTO();
+                })
+                .collect(Collectors.toList());
+    }
+
+    @RequestMapping("/scores")
+    public List<Map<String, Object>> getScoreALL(){
+        return scoreRepository.findAll()
+                .stream()
+                .map(score -> {
+                    ScoreDTO scoreDTO = new ScoreDTO();
+                    return scoreDTO.makeScoreDTO(score);
+                })
+                .collect(Collectors.toList());
+    }
+
+    @RequestMapping("/leaderboard")
+    public List<Map<String, Object>> getLeaderBoard() {
+        return playerRepository.findAll().stream()
+                .map(player -> {
+                    PlayerDTO playerDTO = new PlayerDTO(player);
+                    return playerDTO.makePlayerScoreDTO();
                 })
                 .collect(Collectors.toList());
     }

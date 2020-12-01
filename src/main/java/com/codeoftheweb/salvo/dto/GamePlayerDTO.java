@@ -56,6 +56,7 @@ public class GamePlayerDTO {
                         }))
                 .collect(Collectors.toList()));
 
+
         return  dto;
 
     }

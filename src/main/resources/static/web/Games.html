@@ -3,8 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Salvo!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+
+<!-- Creo una tabla con bootstrap! Tiene columna para nombres y email. -->
+<section>
+    <h2>Game List</h2>
+    <table class="table table-bordered">
+        <thead class="text-center">
+        <tr >
+            <th scope="col" rowspan="2" class="align-middle">Game Id</th>
+            <th scope="col" rowspan="2" class="align-middle">Created</th>
+            <th scope="col" colspan="2" class="align-middle">Player 1</th>
+            <th scope="col" colspan="2" class="align-middle">Player 2</th>
+        </tr>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+        </tr>
+        </thead>
+        <tbody id="table-body1">
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>Leaderboard</h2>
+    <table class="table table-bordered">
+        <thead class="text-center">
+        <tr> <th>Name</th><th>Total</th><th>Won</th><th>Lost</th>
+            <th>Tied</th>
+        </tr>
+        </thead>
+        <tbody id="table-body2">
+        </tbody>
+    </table>
+</section>
+
+
+
 <ol id="games-list">
 </ol>
 <script src="./js/jquery.js"></script>

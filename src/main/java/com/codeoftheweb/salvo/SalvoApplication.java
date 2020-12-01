@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -20,7 +21,7 @@ public class SalvoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(PlayerRepository repository, GameRepository Grepository, GamePlayerRepository GPrepository, ShipRepository SRepository, SalvoRepository salvoRepository) {
+	public CommandLineRunner initData(PlayerRepository repository, GameRepository Grepository, GamePlayerRepository GPrepository, ShipRepository SRepository, SalvoRepository salvoRepository, ScoreRepository scoreRepository) {
 		return (args) -> {
 
 		//Players
@@ -90,6 +91,14 @@ public class SalvoApplication {
 
 			salvoRepository.save(salvo1);
 			salvoRepository.save(salvo2);
+
+
+		//Scores
+			Score score1 = new Score(player1, game1, 1, LocalDateTime.now());
+			Score score2 = new Score(player2, game1, 0, LocalDateTime.now());
+
+			scoreRepository.save(score1);
+			scoreRepository.save(score2);
 
 		};
 	}

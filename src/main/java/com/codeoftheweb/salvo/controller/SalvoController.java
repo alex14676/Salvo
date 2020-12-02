@@ -5,14 +5,16 @@ import com.codeoftheweb.salvo.dto.GamePlayerDTO;
 import com.codeoftheweb.salvo.dto.PlayerDTO;
 import com.codeoftheweb.salvo.dto.ScoreDTO;
 import com.codeoftheweb.salvo.model.GamePlayer;
+import com.codeoftheweb.salvo.model.Player;
 import com.codeoftheweb.salvo.repository.GamePlayerRepository;
 import com.codeoftheweb.salvo.repository.GameRepository;
 import com.codeoftheweb.salvo.repository.PlayerRepository;
 import com.codeoftheweb.salvo.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,9 @@ public class SalvoController {
 
     @Autowired
     ScoreRepository scoreRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping("/players")
     public List<Map<String, Object>> getPlayerAll() {
@@ -84,4 +89,21 @@ public class SalvoController {
         return  gamePlayerDTO.makeGameViewDTO();
     }
 
+    @RequestMapping(path = "/players", method = RequestMethod.POST)
+    public ResponseEntity<Object> register(
+            @RequestParam String userName,
+            @RequestParam String email,
+            @RequestParam String password) {
+
+        if (userName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
+
+        if (playerRepository.findByEmail(email) !=  null) {
+            return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
+        }
+
+        playerRepository.save(new Player(userName, email, passwordEncoder.encode(password)));
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

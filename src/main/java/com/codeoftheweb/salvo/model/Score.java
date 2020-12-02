@@ -4,7 +4,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 public class Score {
@@ -21,10 +20,10 @@ public class Score {
     @JoinColumn(name = "gameID")
     private Game game;
 
-    private int score;
+    private double score;
     private LocalDateTime finishDate;
 
-    public Score(Player player, Game game, int score, LocalDateTime finishDate) {
+    public Score(Player player, Game game, double score, LocalDateTime finishDate) {
         this.player = player;
         this.game = game;
         this.score = score;
@@ -57,11 +56,11 @@ public class Score {
         this.game = game;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(double score) {
         this.score = score;
     }
 

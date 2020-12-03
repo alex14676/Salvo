@@ -17,22 +17,21 @@ public class PlayerDTO {
 
         dto.put("id", this.player.getId());
         dto.put("email", this.player.getEmail());
-        dto.put("nombre", this.player.getName());
+        dto.put("name", this.player.getName());
 
         return dto;
     }
 
     public Map<String, Object> makePlayerScoreDTO(){
         Map<String, Object> dto = new LinkedHashMap<>();
-        Map<String, Object> score = new LinkedHashMap<>();
-
+        Map<String, Object> scores = new LinkedHashMap<>();
         dto.put("id", this.player.getId());
         dto.put("email", this.player.getEmail());
-        dto.put("score", score);
-            score.put("total", this.player.getTotalScore());
-            score.put("won", this.player.getWonScore());
-            score.put("lost", this.player.getLostScore());
-            score.put("tied", this.player.getTiedScore());
+        dto.put("scores", scores);
+            scores.put("total", this.player.getTotalScore());
+            scores.put("won", this.player.getWonScore());
+            scores.put("lost", this.player.getLostScore());
+            scores.put("tied", this.player.getTiedScore());
         return dto;
     }
 

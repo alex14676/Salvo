@@ -52,6 +52,10 @@ public class Player {
         this.password = password;
     }
 
+    public Player(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public String getEmail() {
         return email;

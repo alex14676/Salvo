@@ -11,7 +11,7 @@ public class ScoreDTO {
         dto.put("id", score.getId());
         dto.put("score", score.getScore());
         dto.put("finishDate", score.getFinishDate());
-        dto.put("player", score.getPlayer().getEmail());
+        dto.put("player", score.getPlayer().getId());
         return dto;
     }
 }

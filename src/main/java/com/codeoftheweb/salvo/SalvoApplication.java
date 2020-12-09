@@ -45,7 +45,7 @@ public class SalvoApplication {
 
 
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner initData(PlayerRepository repository,
 									  GameRepository Grepository,
 									  GamePlayerRepository GPrepository,
@@ -139,7 +139,7 @@ public class SalvoApplication {
 			scoreRepository.save(score6);
 
 		};
-	}
+	}*/
 }
 
 @Configuration

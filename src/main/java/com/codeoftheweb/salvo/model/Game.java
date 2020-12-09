@@ -24,7 +24,7 @@ public class Game {
         this.created = date;
     }
 
-    public Game(){}
+    public Game(){this.created = LocalDateTime.now();}
 
 
     public long getId() {

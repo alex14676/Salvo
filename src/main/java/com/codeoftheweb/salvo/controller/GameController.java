@@ -61,7 +61,7 @@ public class GameController {
     }
 
     @RequestMapping(path = "/games", method = RequestMethod.POST)
-    public ResponseEntity<Object> Create(Authentication authentication) {
+    public ResponseEntity<Object> createGame(Authentication authentication) {
         if(Util.isGuest(authentication))
             return new ResponseEntity<>(Util.makeMap("error", "You are not logged in."), HttpStatus.FORBIDDEN);
 

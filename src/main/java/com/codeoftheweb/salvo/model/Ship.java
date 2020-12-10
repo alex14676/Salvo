@@ -37,7 +37,7 @@ public class Ship {
     }
 
     public void setId(Long id) {
-        id = id;
+        this.id = id;
     }
 
     public String getType() {
@@ -45,7 +45,7 @@ public class Ship {
     }
 
     public void setType(String type) {
-        type = type;
+        this.type = type;
     }
 
     public List<String> getLocations() {
@@ -53,7 +53,7 @@ public class Ship {
     }
 
     public void setLocations(List<String> locations) {
-        locations = locations;
+        this.locations = locations;
     }
 
     public GamePlayer getGamePlayer() {

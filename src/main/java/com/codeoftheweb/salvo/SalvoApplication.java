@@ -56,11 +56,11 @@ public class SalvoApplication {
 
 		//Players
 			Player player1 = new Player("david@gmail.com","David", passwordEncoder().encode("12"));
-			Player player2 = new Player("rocket@gmail.com","Rocket", passwordEncoder().encode(""));
+			Player player2 = new Player("rocket@gmail.com","Rocket", passwordEncoder().encode("12"));
 			Player player3 = new Player("alex14676@hotmail.com","Alex", passwordEncoder().encode("46445883"));
-			Player player4 = new Player("nacho@gmail.com","Nacho", passwordEncoder().encode(""));
-			Player player5 = new Player("juan@gmail.com","Juan", passwordEncoder().encode(""));
-			Player player6 = new Player("sergio@gmail.com","Sergio", passwordEncoder().encode(""));
+			Player player4 = new Player("nacho@gmail.com","Nacho", passwordEncoder().encode("12"));
+			Player player5 = new Player("juan@gmail.com","Juan", passwordEncoder().encode("12"));
+			Player player6 = new Player("sergio@gmail.com","Sergio", passwordEncoder().encode("12"));
 
 			repository.save(player1);
 			repository.save(player2);
@@ -116,11 +116,11 @@ public class SalvoApplication {
 			SRepository.save(ship10);
 
 		//Salvos
-			Salvo salvo1 = new Salvo(1, gamePlayer1, List.of("A1", "B1", "C1"));
-			Salvo salvo2 = new Salvo(1,  gamePlayer2, List.of("A2", "B2", "C2"));
+			/*Salvo salvo1 = new Salvo((long) 1, gamePlayer1, List.of("A1", "B1", "C1"));
+			Salvo salvo2 = new Salvo((long) 1,  gamePlayer2, List.of("A2", "B2", "C2"));
 
 			salvoRepository.save(salvo1);
-			salvoRepository.save(salvo2);
+			salvoRepository.save(salvo2);*/
 
 
 		//Scores

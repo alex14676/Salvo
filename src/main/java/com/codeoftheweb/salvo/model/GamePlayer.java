@@ -34,6 +34,17 @@ public class GamePlayer {
         this.game = game;
     }
 
+    public void addSalvo(Salvo salvo){
+        salvo.setGamePlayer(this);
+        salvos.add(salvo);
+    }
+
+    public GamePlayer getOpponent(){
+        return this.getGame().getGamePlayers()
+                .stream().filter(gamePlayer -> gamePlayer.getId() !=this.getId())
+                .findFirst()
+                .orElse(null);
+    }
 
     public long getId() {
         return id;

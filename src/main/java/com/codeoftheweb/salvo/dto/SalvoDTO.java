@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SalvoDTO {
-    public Map<String, Object> makeSalvoDTO(Salvo salvo) {
+    public static Map<String, Object> makeSalvoDTO(Salvo salvo) {
         Map<String, Object> dto = new LinkedHashMap<>();
         dto.put("turn", salvo.getTurn());
         dto.put("player", salvo.getGamePlayer().getPlayer().getId());

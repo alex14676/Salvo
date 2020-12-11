@@ -1,5 +1,6 @@
 package com.codeoftheweb.salvo.controller;
 
+import com.codeoftheweb.salvo.dto.PlayerDTO;
 import com.codeoftheweb.salvo.model.Player;
 import com.codeoftheweb.salvo.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -22,11 +27,11 @@ public class PlayerController {
 
     @RequestMapping(path = "/players", method = RequestMethod.POST)
     public ResponseEntity<Object> register(
-            /*@RequestParam String userName,*/
+            @RequestParam String name,
             @RequestParam String email,
             @RequestParam String password) {
 
-        if (/*userName.isEmpty() || */email.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || name.isEmpty() || password.isEmpty()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
 
@@ -34,7 +39,7 @@ public class PlayerController {
             return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
         }
 
-        playerRepository.save(new Player(/*userName, */email, passwordEncoder.encode(password)));
+        playerRepository.save(new Player(email, name, passwordEncoder.encode(password)));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

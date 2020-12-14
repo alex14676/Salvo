@@ -93,16 +93,16 @@ public class SalvoApplication {
 			GPrepository.save(gamePlayer6);
 
 		//Ships
-			Ship ship1 = new Ship("Carrier", List.of("A1", "A2", "A3","A4", "A5"), gamePlayer1);
-			Ship ship2 = new Ship("Battleship", List.of("B1", "B2", "B3","B4"), gamePlayer1);
-			Ship ship3 = new Ship("Submarine", List.of("C1", "C2", "C3"), gamePlayer1);
-			Ship ship4 = new Ship("Destroyer", List.of("D1", "D2", "D3"), gamePlayer1);
-			Ship ship5 = new Ship("PatrolBoat", List.of("E1", "E2"), gamePlayer1);
-			Ship ship6 = new Ship("Carrier", List.of("A1", "A2", "A3","A4", "A5"), gamePlayer2);
-			Ship ship7 = new Ship("Battleship", List.of("B1", "B2", "B3","B4"),gamePlayer2);
-			Ship ship8 = new Ship("Submarine", List.of("C1", "C2", "C3"), gamePlayer2);
-			Ship ship9 = new Ship("Destroyer", List.of("D1", "D2", "D3"), gamePlayer2);
-			Ship ship10 = new Ship("PatrolBoat", List.of("E1", "E2"), gamePlayer2);
+			Ship ship1 = new Ship("carrier", List.of("A1", "A2", "A3","A4", "A5"), gamePlayer1);
+			Ship ship2 = new Ship("battleship", List.of("B1", "B2", "B3","B4"), gamePlayer1);
+			Ship ship3 = new Ship("submarine", List.of("C1", "C2", "C3"), gamePlayer1);
+			Ship ship4 = new Ship("destroyer", List.of("D1", "D2", "D3"), gamePlayer1);
+			Ship ship5 = new Ship("patrolboat", List.of("E1", "E2"), gamePlayer1);
+			Ship ship6 = new Ship("carrier", List.of("A1", "A2", "A3","A4", "A5"), gamePlayer2);
+			Ship ship7 = new Ship("battleship", List.of("B1", "B2", "B3","B4"),gamePlayer2);
+			Ship ship8 = new Ship("submarine", List.of("C1", "C2", "C3"), gamePlayer2);
+			Ship ship9 = new Ship("destroyer", List.of("D1", "D2", "D3"), gamePlayer2);
+			Ship ship10 = new Ship("patrolboat", List.of("E1", "E2"), gamePlayer2);
 
 			SRepository.save(ship1);
 			SRepository.save(ship2);
@@ -116,11 +116,19 @@ public class SalvoApplication {
 			SRepository.save(ship10);
 
 		//Salvos
-			/*Salvo salvo1 = new Salvo((long) 1, gamePlayer1, List.of("A1", "B1", "C1"));
+			Salvo salvo1 = new Salvo((long) 1,  gamePlayer1, List.of("A1", "B1", "C1", "E1", "E2"));
 			Salvo salvo2 = new Salvo((long) 1,  gamePlayer2, List.of("A2", "B2", "C2"));
+			Salvo salvo3 = new Salvo((long) 2,  gamePlayer1, List.of("A2", "B2", "C2"));
+			Salvo salvo4 = new Salvo((long) 2,  gamePlayer2, List.of("A1", "B1", "C1"));
+			Salvo salvo5 = new Salvo((long) 3,  gamePlayer1, List.of("A3", "B3", "C3"));
+			Salvo salvo6 = new Salvo((long) 3,  gamePlayer2, List.of("A4", "B4", "C4"));
 
 			salvoRepository.save(salvo1);
-			salvoRepository.save(salvo2);*/
+			salvoRepository.save(salvo2);
+			salvoRepository.save(salvo3);
+			salvoRepository.save(salvo4);
+			salvoRepository.save(salvo5);
+			salvoRepository.save(salvo6);
 
 
 		//Scores

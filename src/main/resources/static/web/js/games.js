@@ -26,7 +26,6 @@ $('.login-form').on('submit', function (event) {
                 $("#password").val("");
                 updateJson();
                 $("#createGameForm").show();
-                playLoginSound();
 
             })
             .fail(function() {
@@ -59,8 +58,6 @@ $('.login-form').on('submit', function (event) {
                         $("#newPassword").val("");
                         $("#newName").val("");
                         updateJson();
-                        closeMyModal();
-                        playLoginSound();
 
                     })
                     .fail(function() {
@@ -329,9 +326,8 @@ function showScoreBoard(playersArray) {
 }
 
 function closeMyModal(){
-    $("#myModal").modal('hide');
+    $('#myModal').modal('hide');
 }
-
 
 
 

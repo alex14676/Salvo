@@ -1,10 +1,14 @@
 package com.codeoftheweb.salvo.util;
 
 import com.codeoftheweb.salvo.model.GamePlayer;
+import com.codeoftheweb.salvo.model.Ship;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -41,5 +45,13 @@ public class Util {
         if(row < 'A' || 'J' < row) return true;
         if(col < 1 || 10 < col) return true;
         return false;
+    }
+
+    public static  List<String> getLocationsByType(String type, GamePlayer self){
+        return  self.getShips().size()  ==  0 ? new ArrayList<>() : self.getShips()
+                .stream()
+                .filter(ship -> ship.getType().equals(type))
+                .findFirst().get()
+                .getLocations();
     }
 }

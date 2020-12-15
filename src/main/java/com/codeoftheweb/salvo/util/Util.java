@@ -1,15 +1,15 @@
 package com.codeoftheweb.salvo.util;
 
+import com.codeoftheweb.salvo.dto.HitsDTO;
 import com.codeoftheweb.salvo.model.GamePlayer;
+import com.codeoftheweb.salvo.model.Score;
 import com.codeoftheweb.salvo.model.Ship;
+import net.bytebuddy.asm.Advice;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toMap;
@@ -53,5 +53,37 @@ public class Util {
                 .filter(ship -> ship.getType().equals(type))
                 .findFirst().get()
                 .getLocations();
+    }
+
+
+    public static String gameState (GamePlayer gamePlayer){
+        Map<String, Object>hits = new LinkedHashMap<>();
+
+        if (gamePlayer.getShips().isEmpty()){
+            return "PLACESHIPS";
+        }
+        if (gamePlayer.getGame().getGamePlayers().size() == 1 || gamePlayer.getOpponent().getShips().size() == 0){
+            return "WAITINGFOROPP";
+        }
+        long MyTurn = gamePlayer.getSalvos().size();
+        long OpponentTurn = gamePlayer.getOpponent().getSalvos().size();
+        if (MyTurn > OpponentTurn){
+            return "WAIT";
+        }
+
+        if (gamePlayer.getGame().getGamePlayers().size() == 2 && gamePlayer.getSalvos().size() == gamePlayer.getOpponent().getSalvos().size()){
+            HitsDTO hitsDTO = new HitsDTO();
+            int mySelfImpact = hitsDTO.makeDagame(gamePlayer);
+            int OpponentImpact = hitsDTO.makeDagame(gamePlayer.getOpponent());
+
+            if (mySelfImpact == 17 && OpponentImpact == 17){
+                return "TIE";
+            } else if (mySelfImpact == 17){
+                return "LOSE";
+            } else if (OpponentImpact == 17){
+                return "WON";
+            }
+        }
+        return "PLAY";
     }
 }

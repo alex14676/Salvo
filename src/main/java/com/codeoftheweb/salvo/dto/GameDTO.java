@@ -27,14 +27,11 @@ public class GameDTO {
                     GamePlayerDTO gamePlayerDTO = new GamePlayerDTO(gamePlayer);
                     return gamePlayerDTO.makeGamePlayerDTO();})
                 .collect(Collectors.toList()));
-        dto.put("scores", this.game.getGamePlayers()
+        dto.put("scores", this.game.getScores()
                 .stream()
-                .flatMap(gamePlayer -> gamePlayer.getPlayer().getScores()
-                        .stream()
-                        .map(score -> {
-                            ScoreDTO scoreDTO = new ScoreDTO();
-                            return scoreDTO.makeScoreDTO(score);
-                        }))
+                .map(score -> {
+                    ScoreDTO scoreDTO = new ScoreDTO();
+                    return scoreDTO.makeScoreDTO(score);})
                 .collect(Collectors.toList()));
         return dto;
     }

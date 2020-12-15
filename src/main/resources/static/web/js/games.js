@@ -57,7 +57,9 @@ $('.login-form').on('submit', function (event) {
                         $("#newUsername").val("");
                         $("#newPassword").val("");
                         $("#newName").val("");
+                        $("#createGameForm").show();
                         updateJson();
+                        closeMyModal();
 
                     })
                     .fail(function() {
@@ -163,11 +165,13 @@ function updateView() {
             $('#logout-form').hide("slow");
             $('#login-form').show("slow");
             $("#createGameForm").hide();
+            $('#modal').show("slow");
 
         } else {
 
             $('#currentPlayer').text(data.player.email);
             $('#login-form').hide("slow");
+            $('#modal').hide("slow");
             $('#logout-form').show("slow");
 
         }

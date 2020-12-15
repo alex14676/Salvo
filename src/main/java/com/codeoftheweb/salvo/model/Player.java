@@ -44,6 +44,10 @@ public class Player {
         return getWonScore() * 1.0D + getLostScore() * 0.0D + getTiedScore() * 0.5D;
     }
 
+    public void addScore(Score score){
+        scores.add(score);
+    }
+
     public Player() { }
 
     public Player(String email, String name, String password) {

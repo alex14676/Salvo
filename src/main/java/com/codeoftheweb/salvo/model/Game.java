@@ -20,12 +20,26 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private Set<GamePlayer> gamePlayers;
 
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
+    private Set<Score> scores;
+
     public Game(LocalDateTime date) {
         this.created = date;
     }
 
-    public Game(){}
+    public Game(){this.created = LocalDateTime.now();}
 
+    public Game(Set<Score> scores) {
+        this.scores = scores;
+    }
+
+    public Set<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
+    }
 
     public long getId() {
         return id;
@@ -54,4 +68,5 @@ public class Game {
     public void setGamePlayers(Set<GamePlayer> gamePlayers) {
         this.gamePlayers = gamePlayers;
     }
+
 }

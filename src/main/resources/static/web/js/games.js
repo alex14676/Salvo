@@ -3,6 +3,7 @@ var gamesData;
 var playersArray;
 var submitButton;
 
+
 updateJson();
 
 $(function() {
@@ -122,7 +123,9 @@ $('#createGame').click(function (event) {
                 {
                     location.href = gameViewUrl;
                 }, 3000);
+
         })
+
         .fail(function (data) {
             console.log("game creation failed");
             $('#errorSignup').text(data.responseJSON.error);
@@ -174,6 +177,7 @@ function updateView() {
             $('#modal').hide("slow");
             $('#logout-form').show("slow");
 
+
         }
 }
 
@@ -192,6 +196,7 @@ function showGamesTable(gamesData) {
             var row = $('<tr></tr>').prependTo(table);
             $('<td class="textCenter">' + gamesData[i].id + '</td>').appendTo(row);
             $('<td>' + DateCreated + '</td>').appendTo(row);
+
 
 
             for (var j = 0; j < gamesData[i].gamePlayers.length; j++) {
@@ -252,6 +257,7 @@ function showGamesTable(gamesData) {
 
             });
     });
+
 }
 
 function getPlayers(gamesData) {

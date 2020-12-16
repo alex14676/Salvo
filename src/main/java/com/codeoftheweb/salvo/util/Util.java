@@ -79,7 +79,7 @@ public class Util {
             if (mySelfImpact == 17 && OpponentImpact == 17){
                 return "TIE";
             } else if (mySelfImpact == 17){
-                return "LOSE";
+                return "LOST";
             } else if (OpponentImpact == 17){
                 return "WON";
             }
